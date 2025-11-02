@@ -1,8 +1,21 @@
 'use client'
 import { Check, Star, Award, Shield, Zap, ArrowRight, Sparkles, Clock, Users, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
+
+interface PackageType {
+  title: string
+  subtitle: string
+  price: string
+  originalPrice: string
+  duration: string
+  badge: string
+  features: string[]
+  highlights: string[]
+  recommended: boolean
+  icon: React.ReactNode
+}
 
 export default function Pricing() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -19,7 +32,7 @@ export default function Pricing() {
       `Halo, saya tertarik dengan Paket ${pkgTitle}. Boleh minta info lebih lanjut?`
     )}`
 
-  const packages = [
+  const packages: PackageType[] = [
     {
       title: 'Starter',
       subtitle: 'Sempurna untuk Landing Page',
@@ -297,7 +310,7 @@ function PricingCard({
   pkg, 
   generateWaLink 
 }: { 
-  pkg: any
+  pkg: PackageType
   generateWaLink: (title: string) => string 
 }) {
   return (

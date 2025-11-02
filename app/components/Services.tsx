@@ -15,6 +15,14 @@ import {
   ChevronRight
 } from 'lucide-react'
 
+interface ServiceType {
+  icon: React.ReactNode
+  title: string
+  desc: string
+  features: string[]
+  hoverImage: string
+}
+
 export default function Services() {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [touchStart, setTouchStart] = useState(0)
@@ -24,7 +32,7 @@ export default function Services() {
     AOS.init({ once: true, duration: 800 })
   }, [])
 
-  const services = [
+  const services: ServiceType[] = [
     {
       icon: <Globe size={24} className="sm:w-7 sm:h-7" style={{ color: 'var(--primary-700)' }} aria-hidden="true" />,
       title: 'Website Bisnis & Korporat',
@@ -221,7 +229,7 @@ export default function Services() {
 }
 
 // Service Card Component
-function ServiceCard({ service }: { service: any }) {
+function ServiceCard({ service }: { service: ServiceType }) {
   return (
     <div
       className="group relative card-base rounded-2xl hover:shadow-xl transition-all duration-300 p-5 sm:p-6 md:p-8 border hover:border-[var(--primary-200)] overflow-hidden h-full"
