@@ -185,7 +185,7 @@ export default function Portfolio() {
   }
 
   return (
-    <section className="py-20 md:py-24 px-6 lg:px-8" style={{ backgroundColor: 'var(--surface-primary)' }}>
+    <section className="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'var(--surface-primary)' }}>
       
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-30">
@@ -195,55 +195,55 @@ export default function Portfolio() {
       <div className="max-w-screen-xl mx-auto text-center relative z-10">
         
         {/* Professional Header */}
-        <div className="mb-16">
-          <div className="inline-flex items-center gap-3 mb-6 px-4 py-2 card-base rounded-full">
-            <Shield size={16} style={{ color: 'var(--primary-700)' }} />
-            <span className="text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>Portfolio Profesional</span>
+        <div className="mb-12 sm:mb-14 md:mb-16">
+          <div className="inline-flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 px-3 sm:px-4 py-1.5 sm:py-2 card-base rounded-full">
+            <Shield size={14} className="sm:w-4 sm:h-4" style={{ color: 'var(--primary-700)' }} />
+            <span className="text-xs sm:text-sm font-medium" style={{ color: 'var(--text-secondary)' }}>Portfolio Profesional</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: 'var(--text-primary)' }}>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-5 md:mb-6 px-4" style={{ color: 'var(--text-primary)' }}>
             Projek <span style={{ color: 'var(--primary-700)' }}>Yang Telah Diselesaikan</span>
           </h2>
           
-          <p className="text-lg max-w-3xl mx-auto leading-relaxed mb-8" style={{ color: 'var(--text-tertiary)' }}>
+          <p className="text-sm sm:text-base md:text-lg max-w-3xl mx-auto leading-relaxed mb-6 sm:mb-7 md:mb-8 px-4" style={{ color: 'var(--text-tertiary)' }}>
             Berikut beberapa website yang telah kami selesaikan dari klien dari berbegai permintaan industri. 
             Setiap proyek dirancang dengan standar profesional dan dioptimalkan untuk performa terbaik.
           </p>
 
           {/* Professional Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-10 md:mb-12 px-4">
             <div className="text-center relative group">
-              <div className="text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>15+</div>
-              <div className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Projek Selesai</div>
+              <div className="text-xl sm:text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>15+</div>
+              <div className="text-xs sm:text-sm" style={{ color: 'var(--text-tertiary)' }}>Projek Selesai</div>
               {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg z-20 w-48 text-center">
+              <div className="hidden md:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg z-20 w-48 text-center">
                 Total proyek yang berhasil diselesaikan dengan kepuasan klien
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
               </div>
             </div>
             <div className="text-center relative group">
-              <div className="text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>95+</div>
-              <div className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Avg Performance</div>
+              <div className="text-xl sm:text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>95+</div>
+              <div className="text-xs sm:text-sm" style={{ color: 'var(--text-tertiary)' }}>Avg Performance</div>
               {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg z-20 w-48 text-center">
+              <div className="hidden md:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg z-20 w-48 text-center">
                 Skor rata-rata performa website berdasarkan Google Lighthouse
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
               </div>
             </div>
             <div className="text-center relative group">
-              <div className="text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>100%</div>
-              <div className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Mobile Ready</div>
+              <div className="text-xl sm:text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>100%</div>
+              <div className="text-xs sm:text-sm" style={{ color: 'var(--text-tertiary)' }}>Mobile Ready</div>
               {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg z-20 w-48 text-center">
+              <div className="hidden md:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg z-20 w-48 text-center">
                 Semua website responsif dan optimal di perangkat mobile
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
               </div>
             </div>
             <div className="text-center relative group">
-              <div className="text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>SEO</div>
-              <div className="text-sm" style={{ color: 'var(--text-tertiary)' }}>Optimized</div>
+              <div className="text-xl sm:text-2xl font-bold mb-1" style={{ color: 'var(--text-primary)' }}>SEO</div>
+              <div className="text-xs sm:text-sm" style={{ color: 'var(--text-tertiary)' }}>Optimized</div>
               {/* Tooltip */}
-              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg z-20 w-48 text-center">
+              <div className="hidden md:block absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-4 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none shadow-lg z-20 w-48 text-center">
                 Dioptimalkan untuk mesin pencari dengan best practices SEO
                 <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-4 border-transparent border-t-gray-900"></div>
               </div>
@@ -252,13 +252,13 @@ export default function Portfolio() {
         </div>
 
         {/* Professional Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-10 md:mb-12 px-4">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => handleCategoryChange(cat)}
               disabled={isTransitioning}
-              className={`px-6 py-2.5 text-sm font-medium border rounded-lg transition-all duration-300 disabled:opacity-50 ${
+              className={`px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-medium border rounded-lg transition-all duration-300 disabled:opacity-50 ${
                 activeCategory === cat
                   ? 'shadow-md'
                   : 'hover:bg-[var(--primary-50)]'
@@ -288,7 +288,7 @@ export default function Portfolio() {
 
         {/* Professional Portfolio Grid with Animation */}
         {displayedProjects.length > 0 ? (
-          <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 transition-opacity duration-300 ${
+          <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mb-8 sm:mb-10 md:mb-12 transition-opacity duration-300 ${
             isTransitioning ? 'opacity-0' : 'opacity-100'
           }`}>
             {displayedProjects.map((project, i) => (
@@ -300,8 +300,8 @@ export default function Portfolio() {
               >
                 {/* Featured Badge */}
                 {project.featured && (
-                  <div className="absolute top-4 left-4 z-10 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-lg" style={{ backgroundColor: 'var(--primary-700)' }}>
-                    <Star size={12} className="inline mr-1" />
+                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4 z-10 text-white text-xs font-semibold px-2.5 sm:px-3 py-1 rounded-full shadow-lg" style={{ backgroundColor: 'var(--primary-700)' }}>
+                    <Star size={10} className="inline mr-1 sm:w-3 sm:h-3" />
                     Favorite
                   </div>
                 )}
@@ -322,29 +322,29 @@ export default function Portfolio() {
                   
                   {/* Professional Overlay */}
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ backgroundColor: 'rgba(15, 23, 42, 0.75)' }}>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white space-y-4">
+                    <div className="absolute inset-0 flex items-center justify-center p-4">
+                      <div className="text-center text-white space-y-3 sm:space-y-4">
                         
                         {/* Performance Metrics */}
-                        <div className="flex justify-center gap-6 text-white text-sm">
+                        <div className="flex justify-center gap-3 sm:gap-4 md:gap-6 text-white text-xs sm:text-sm">
                           <div className="flex flex-col items-center">
                             <span className="text-xs mb-1" style={{ color: 'var(--neutral-300)' }}>Performance</span>
                             <div className="flex items-center gap-1">
-                              <GaugeCircle size={14} />
+                              <GaugeCircle size={12} className="sm:w-3.5 sm:h-3.5" />
                               <span className="font-semibold">{project.scores.performance}</span>
                             </div>
                           </div>
                           <div className="flex flex-col items-center">
                             <span className="text-xs mb-1" style={{ color: 'var(--neutral-300)' }}>Accessibility</span>
                             <div className="flex items-center gap-1">
-                              <Eye size={14} />
+                              <Eye size={12} className="sm:w-3.5 sm:h-3.5" />
                               <span className="font-semibold">{project.scores.accessibility}</span>
                             </div>
                           </div>
                           <div className="flex flex-col items-center">
                             <span className="text-xs mb-1" style={{ color: 'var(--neutral-300)' }}>SEO</span>
                             <div className="flex items-center gap-1">
-                              <SearchCheck size={14} />
+                              <SearchCheck size={12} className="sm:w-3.5 sm:h-3.5" />
                               <span className="font-semibold">{project.scores.seo}</span>
                             </div>
                           </div>
@@ -355,7 +355,7 @@ export default function Portfolio() {
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold text-sm transition-colors duration-300"
+                          className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm transition-colors duration-300"
                           style={{ 
                             backgroundColor: 'white', 
                             color: 'var(--text-primary)',
@@ -367,7 +367,7 @@ export default function Portfolio() {
                             e.currentTarget.style.backgroundColor = 'white'
                           }}
                         >
-                          <ExternalLink size={16} />
+                          <ExternalLink size={14} className="sm:w-4 sm:h-4" />
                           Kunjungi Website
                         </a>
                       </div>
@@ -376,11 +376,11 @@ export default function Portfolio() {
                 </div>
 
                 {/* Professional Content */}
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
+                <div className="p-4 sm:p-5 md:p-6">
+                  <h3 className="text-base sm:text-lg font-semibold mb-2" style={{ color: 'var(--text-primary)' }}>
                     {project.title}
                   </h3>
-                  <span className="inline-block text-sm px-3 py-1 rounded-full" style={{ 
+                  <span className="inline-block text-xs sm:text-sm px-2.5 sm:px-3 py-1 rounded-full" style={{ 
                     color: 'var(--text-tertiary)', 
                     backgroundColor: 'var(--neutral-100)' 
                   }}>
@@ -391,16 +391,16 @@ export default function Portfolio() {
             ))}
           </div>
         ) : (
-          <p style={{ color: 'var(--text-tertiary)' }} className="mt-8">Tidak ada proyek ditemukan untuk kategori ini.</p>
+          <p style={{ color: 'var(--text-tertiary)' }} className="mt-8 text-sm sm:text-base">Tidak ada proyek ditemukan untuk kategori ini.</p>
         )}
 
         {/* Professional Pagination with Animation */}
         {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-4">
+          <div className="flex justify-center items-center gap-3 sm:gap-4">
             <button
               onClick={() => handlePageChange(Math.max(currentPage - 1, 1))}
               disabled={currentPage === 1 || isTransitioning}
-              className="p-3 rounded-lg border transition-all duration-300 disabled:opacity-40"
+              className="p-2 sm:p-3 rounded-lg border transition-all duration-300 disabled:opacity-40"
               style={{ 
                 borderColor: 'var(--border-light)', 
                 color: 'var(--text-tertiary)',
@@ -417,15 +417,15 @@ export default function Portfolio() {
                 }
               }}
             >
-              <ChevronLeft size={20} />
+              <ChevronLeft size={18} className="sm:w-5 sm:h-5" />
             </button>
-            <span className="font-medium px-4" style={{ color: 'var(--text-secondary)' }}>
+            <span className="font-medium px-3 sm:px-4 text-sm sm:text-base" style={{ color: 'var(--text-secondary)' }}>
               {currentPage} dari {totalPages}
             </span>
             <button
               onClick={() => handlePageChange(Math.min(currentPage + 1, totalPages))}
               disabled={currentPage === totalPages || isTransitioning}
-              className="p-3 rounded-lg border transition-all duration-300 disabled:opacity-40"
+              className="p-2 sm:p-3 rounded-lg border transition-all duration-300 disabled:opacity-40"
               style={{ 
                 borderColor: 'var(--border-light)', 
                 color: 'var(--text-tertiary)',
@@ -442,7 +442,7 @@ export default function Portfolio() {
                 }
               }}
             >
-              <ChevronRight size={20} />
+              <ChevronRight size={18} className="sm:w-5 sm:h-5" />
             </button>
           </div>
         )}        
