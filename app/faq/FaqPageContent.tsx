@@ -330,7 +330,7 @@ export default function FaqPageContent() {
           <div className="text-center mb-8">
             <p className="text-slate-600">
               {searchTerm ? (
-                <>Menampilkan <strong>{filteredFaqs.length}</strong> hasil untuk "{searchTerm}"</>
+                <>Menampilkan <strong>{filteredFaqs.length}</strong> hasil untuk &ldquo;{searchTerm}&rdquo;</>
               ) : (
                 <>Menampilkan <strong>{filteredFaqs.length}</strong> pertanyaan dalam kategori <strong>{faqCategories.find(c => c.id === activeCategory)?.name}</strong></>
               )}

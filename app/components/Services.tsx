@@ -10,7 +10,6 @@ import {
   Brush,
   CheckCircle,
   Shield,
-  ArrowRight,
   Zap
 } from 'lucide-react'
 

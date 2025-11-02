@@ -1,12 +1,12 @@
 'use client'
 
+import Image from 'next/image'
 import {
   Mail,
   PhoneCall,
   MapPin,
   Clock,
-  MessageCircle,
-  Heart
+  MessageCircle
 } from 'lucide-react'
 
 export default function Footer() {
@@ -66,8 +66,8 @@ export default function Footer() {
           <ContactCard
             icon={<Clock size={20} />}
             title="Jam Operasional"
-            value="Senin — Sabtu"
-            subtitle="09.00 — 17.00 WIB"
+            value="Senin – Sabtu"
+            subtitle="09.00 – 17.00 WIB"
           />
         </div>
       </div>
@@ -78,9 +78,11 @@ export default function Footer() {
       }}>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-3">
-            <img 
+            <Image 
               src="/images/logo.webp" 
               alt="PintuWeb Logo" 
+              width={32}
+              height={32}
               className="h-8 w-auto" 
             />
             <div>

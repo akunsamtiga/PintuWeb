@@ -3,7 +3,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import dynamic from 'next/dynamic'
-import images from 'next/image'
 
 // Lazy load Header dan Footer untuk performa
 const Header = dynamic(() => import('./components/Header'), { ssr: true })
@@ -32,37 +31,34 @@ export const metadata: Metadata = {
     type: 'website',
   },
   twitter: {
-    card: 'summary_large_image', // Menentukan jenis tampilan kartu saat dibagikan di Twitter (gambar besar).
-    title: 'Pintu Web – Jasa Pembuatan Website Profesional', // Judul yang muncul di preview Twitter Card.
-    description: 'Bikin website cepat, modern, dan terpercaya untuk UMKM, startup, dan bisnis lokal. Tampil lebih profesional secara online.', // Deskripsi ringkas yang muncul di preview.
-    // site: '@pintuweb', // (Opsional) Username Twitter perusahaan/brand. Aktifkan jika sudah punya akun.
-    // creator: '@pintuweb', // (Opsional) Username pembuat konten. Bisa sama dengan `site` jika hanya ada satu akun.
+    card: 'summary_large_image',
+    title: 'Pintu Web – Jasa Pembuatan Website Profesional',
+    description: 'Bikin website cepat, modern, dan terpercaya untuk UMKM, startup, dan bisnis lokal. Tampil lebih profesional secara online.',
   },
   icons: {
-    icon: '/images/favicon.ico', // Ikon utama (favicon) yang muncul di tab browser
-    shortcut: '/images/favicon.ico', // Ikon cepat/alternatif, biasanya sama dengan favicon
-    apple: '/images/apple-touch-icon.png', // Untuk perangkat Apple (iPhone/iPad), ukuran ideal: 180x180px
+    icon: '/images/favicon.ico',
+    shortcut: '/images/favicon.ico',
+    apple: '/images/apple-touch-icon.png',
     other: [
       {
         rel: 'icon',
-        url: '/images/favicon-32x32.png', // Versi 32x32 (biasa untuk desktop)
+        url: '/images/favicon-32x32.png',
       },
       {
         rel: 'icon',
-        url: '/images/favicon-16x16.png', // Versi 16x16 (untuk skenario kecil atau lama)
+        url: '/images/favicon-16x16.png',
       },
       {
         rel: 'manifest',
-        url: '/site.webmanifest', // (Opsional) Jika kamu punya Progressive Web App manifest
+        url: '/site.webmanifest',
       },
     ],
   },
-  themeColor: '#1d4ed8', // address bar (mobile browser)
+  themeColor: '#1d4ed8',
   alternates: {
     canonical: 'https://pintuweb.com',
     languages: {
-      'id-ID': 'https://pintuweb.com', // Versi Bahasa Indonesia
-      // 'en-US': 'https://pintuweb.com/en', // Aktifkan jika nanti punya versi Bahasa Inggris
+      'id-ID': 'https://pintuweb.com',
     },
   }
 }

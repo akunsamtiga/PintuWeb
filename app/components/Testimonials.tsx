@@ -9,14 +9,11 @@ import {
   Quote, 
   Shield, 
   TrendingUp, 
-  Users, 
-  Clock,
   CheckCircle2,
   ArrowRight,
   Filter,
   Award,
-  Target,
-  Zap
+  Target
 } from 'lucide-react'
 
 const testimonialCategories = [
@@ -270,7 +267,7 @@ export default function Testimonials() {
           </p>
 
           {/* Overall Stats */}
-          <div className="flex flex-wrap justify-center items-center gap-8 mb-12">
+          <div className="flex flex-wrap justify-center items-center gap-8 mb-12" data-aos="fade-up" data-aos-delay="300">
             <div className="text-center">
               <div className="flex items-center justify-center gap-2 mb-2">
                 <span className="text-2xl font-bold" style={{ color: 'var(--text-primary)' }}>{totalRating.toFixed(1)}</span>
@@ -346,7 +343,7 @@ export default function Testimonials() {
 
                 {/* Testimonial Content */}
                 <blockquote className="mb-6 leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
-                  "{testimonial.quote}"
+                  &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
 
                 {/* Rating */}
@@ -521,7 +518,7 @@ export default function Testimonials() {
 
                 {/* Quote */}
                 <blockquote className="mb-4 text-sm leading-relaxed line-clamp-4 group-hover:line-clamp-none transition-all" style={{ color: 'var(--text-secondary)' }}>
-                  "{testimonial.quote}"
+                  &ldquo;{testimonial.quote}&rdquo;
                 </blockquote>
 
                 {/* Rating */}

@@ -1,13 +1,8 @@
 'use client'
 
 import {
-  Briefcase,
-  Code,
-  Heart,
   Linkedin,
-  Sparkles,
   ArrowRight,
-  UserCheck,
   Calendar,
   MessageCircle,
 } from 'lucide-react'
@@ -40,6 +35,7 @@ export default function OwnerPageContent() {
                 href="https://github.com/yourgithub"
                 className="text-gray-600 hover:text-gray-900 text-sm underline"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 GitHub
               </a>
@@ -136,9 +132,9 @@ export default function OwnerPageContent() {
       <section className="py-24 px-6 bg-white">
         <div className="max-w-3xl mx-auto text-center">
           <blockquote className="text-xl italic text-gray-700">
-            "Sebuah website bukan hanya desain — tapi citra, kepercayaan, dan strategi bisnis."
+            &ldquo;Sebuah website bukan hanya desain &mdash; tapi citra, kepercayaan, dan strategi bisnis.&rdquo;
           </blockquote>
-          <p className="mt-4 text-gray-500">– Sanzy, Founder Pintu Web</p>
+          <p className="mt-4 text-gray-500">&mdash; Sanzy, Founder Pintu Web</p>
         </div>
       </section>
 
@@ -151,9 +147,9 @@ export default function OwnerPageContent() {
           <div className="bg-white rounded-xl p-6 shadow-md">
             <MessageCircle size={24} className="text-blue-600 mb-2 mx-auto" />
             <p className="text-gray-700 italic max-w-2xl mx-auto mb-4">
-              "Sanzy sangat komunikatif dan detail. Website kami jauh lebih profesional dan cepat setelah dibangun ulang oleh Pintu Web."
+              &ldquo;Sanzy sangat komunikatif dan detail. Website kami jauh lebih profesional dan cepat setelah dibangun ulang oleh Pintu Web.&rdquo;
             </p>
-            <p className="text-sm font-semibold text-gray-800">– Budi, Founder Kopi Lokal</p>
+            <p className="text-sm font-semibold text-gray-800">&mdash; Budi, Founder Kopi Lokal</p>
           </div>
         </div>
       </section>

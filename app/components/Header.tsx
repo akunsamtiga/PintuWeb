@@ -1,8 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { Phone, Menu, X, ChevronDown, Shield, Award } from 'lucide-react'
+import { Phone, Menu, X, Shield, Award } from 'lucide-react'
 
 const sectionIds = ['hero', 'services', 'portfolio', 'pricing', 'contact', 'faq']
 
@@ -115,9 +116,11 @@ export default function Header() {
           {/* Professional Logo Section */}
           <Link href="/" prefetch={false} className="flex items-center space-x-3 group">
             <div className="relative">
-              <img 
+              <Image 
                 src="/images/logo.webp" 
                 alt="Pintuweb - Jasa Website Profesional" 
+                width={36}
+                height={36}
                 className="h-9 w-auto transition-all duration-300 group-hover:scale-105" 
               />
               {/* Trust badge */}

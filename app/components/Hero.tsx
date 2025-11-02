@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import { ArrowRight, CheckCircle, MapPin, Shield, Clock, Users, Award, Star, Zap } from 'lucide-react'
+import { ArrowRight, CheckCircle, MapPin, Shield, Users, Award, Star, Zap } from 'lucide-react'
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)

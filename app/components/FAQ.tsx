@@ -3,7 +3,6 @@
 import { useState, useMemo } from 'react'
 import { 
   ChevronDown, 
-  ChevronUp, 
   HelpCircle, 
   Search, 
   Shield, 
@@ -12,9 +11,7 @@ import {
   Settings, 
   Users, 
   ArrowRight,
-  MessageCircle,
-  CheckCircle2,
-  Star
+  MessageCircle
 } from 'lucide-react'
 
 const faqCategories = [
@@ -126,7 +123,7 @@ const faqItems = [
     tags: ['partnership', '24/7', 'bantuan']
   },
 
-    // Additional General Questions
+  // Additional General Questions
   {
     category: 'general',
     question: 'Apakah bisa request fitur custom sesuai kebutuhan bisnis?',
