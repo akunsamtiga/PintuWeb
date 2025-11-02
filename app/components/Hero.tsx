@@ -16,6 +16,21 @@ export default function Hero() {
       role="region"
       aria-label="Hero Section"
     >
+      {/* Background Image for Mobile & Tablet - Positioned Right & Cropped */}
+      <div className="absolute inset-0 lg:hidden pointer-events-none">
+        <div className="absolute top-0 -right-10 sm:right-0 md:right-10 w-[65%] sm:w-[55%] md:w-[45%] h-full opacity-30 sm:opacity-35 md:opacity-40">
+          <Image
+            src="/images/bg2.webp"
+            alt=""
+            fill
+            className="object-cover object-left"
+            priority
+          />
+          {/* Gradient Overlay to blend with background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--surface-primary)] via-[var(--surface-primary)]/80 to-transparent"></div>
+        </div>
+      </div>
+
       {/* Subtle Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute inset-0 pattern-dots"></div>
@@ -148,8 +163,8 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Image Section */}
-        <div className={`order-1 md:order-2 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
+        {/* Image Section - Hidden on Mobile & Tablet, Visible on Desktop */}
+        <div className={`hidden lg:block order-1 md:order-2 transform transition-all duration-700 delay-200 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-8 opacity-0'}`}>
           
           <div className="relative group">
             {/* Main Image Container */}

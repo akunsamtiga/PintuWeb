@@ -146,7 +146,7 @@ export default function Services() {
           <div className="text-center mb-6 sm:mb-7 md:mb-8">
             <div className="inline-flex items-center gap-2 mb-3 sm:mb-4">
               <Zap size={18} className="sm:w-5 sm:h-5" style={{ color: 'var(--primary-700)' }} />
-              <span className="font-semibold text-base sm:text-lg md:text-xl" style={{ color: 'var(--text-primary)' }}>
+              <span className="font-semibold text-base sm:text-lg md:text-xl line-clamp-1 md:line-clamp-2" style={{ color: 'var(--text-primary)' }}>
                 Mengapa Memilih Kami? Apa Bedanya Dengan Jasa Penyedia Lainnya?
               </span>
             </div>
