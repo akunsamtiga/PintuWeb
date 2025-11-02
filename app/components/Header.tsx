@@ -121,6 +121,10 @@ export default function Header() {
                 alt="Pintuweb - Jasa Website Profesional" 
                 width={36}
                 height={36}
+                quality={100}        // ← Tambahkan ini (kualitas maksimal)
+                priority             // ← Tambahkan ini (load priority tinggi)
+                unoptimized          // ← Tambahkan ini (disable optimisasi Next.js)
+
                 className="h-9 w-auto transition-all duration-300 group-hover:scale-105" 
               />
               {/* Trust badge */}

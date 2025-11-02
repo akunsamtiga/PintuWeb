@@ -18,7 +18,7 @@ export default function Hero() {
     >
       {/* Background Image for Mobile & Tablet - Positioned Right & Cropped */}
       <div className="absolute inset-0 lg:hidden pointer-events-none">
-        <div className="absolute top-0 -right-10 sm:right-0 md:right-10 w-[65%] sm:w-[55%] md:w-[45%] h-full opacity-30 sm:opacity-35 md:opacity-40">
+        <div className="absolute top-0 -right-10 sm:right-0 md:right-10 w-[65%] sm:w-[55%] md:w-[45%] h-full opacity-10 sm:opacity-15 md:opacity-20">
           <Image
             src="/images/bg2.webp"
             alt=""

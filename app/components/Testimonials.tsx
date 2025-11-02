@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import Image from 'next/image'
@@ -13,7 +13,9 @@ import {
   ArrowRight,
   Filter,
   Award,
-  Target
+  Target,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react'
 
 const testimonialCategories = [
@@ -210,6 +212,12 @@ export default function Testimonials() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [visibleTestimonials, setVisibleTestimonials] = useState(6)
   const [isLoading, setIsLoading] = useState(false)
+  
+  // Carousel states
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [touchStart, setTouchStart] = useState(0)
+  const [touchEnd, setTouchEnd] = useState(0)
+  const carouselRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     AOS.init({ once: true, duration: 800 })
@@ -233,10 +241,122 @@ export default function Testimonials() {
   const handleCategoryChange = (categoryId: string) => {
     setActiveCategory(categoryId)
     setVisibleTestimonials(6)
+    setCurrentSlide(0)
   }
 
   const featuredTestimonials = testimonials.filter(t => t.featured)
   const totalRating = testimonials.reduce((sum, t) => sum + t.rating, 0) / testimonials.length
+
+  // Carousel functions
+  const nextSlide = () => {
+    setCurrentSlide((prev) => 
+      prev === currentTestimonials.length - 1 ? 0 : prev + 1
+    )
+  }
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => 
+      prev === 0 ? currentTestimonials.length - 1 : prev - 1
+    )
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+  }
+
+  // Touch handlers for swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX)
+  }
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      nextSlide()
+    }
+    if (touchStart - touchEnd < -75) {
+      prevSlide()
+    }
+  }
+
+  // Reset slide when category changes
+  useEffect(() => {
+    setCurrentSlide(0)
+  }, [activeCategory])
+
+  const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => (
+    <div className="card-base rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group h-full">
+      {/* Industry Tag */}
+      <div className="flex items-center justify-between mb-4">
+        <span className="text-xs px-3 py-1 rounded-full" style={{ 
+          backgroundColor: 'var(--neutral-100)', 
+          color: 'var(--text-tertiary)' 
+        }}>
+          {testimonial.industry}
+        </span>
+        {testimonial.verified && (
+          <div className="flex items-center gap-1 text-xs" style={{ color: 'var(--success-600)' }}>
+            <CheckCircle2 size={12} />
+            <span>Verified</span>
+          </div>
+        )}
+      </div>
+
+      {/* Results */}
+      {testimonial.results && (
+        <div className="rounded-lg p-3 mb-4" style={{ 
+          background: 'linear-gradient(135deg, var(--primary-50), var(--secondary-50))' 
+        }}>
+          <div className="flex items-center gap-2" style={{ color: 'var(--primary-700)' }}>
+            <Target size={16} />
+            <div className="text-sm">
+              <span className="font-bold">{testimonial.results.increase}</span>
+              <span className="ml-1" style={{ color: 'var(--primary-600)' }}>{testimonial.results.metric}</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Quote */}
+      <blockquote className="mb-4 text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+        &ldquo;{testimonial.quote}&rdquo;
+      </blockquote>
+
+      {/* Rating */}
+      <div className="flex items-center gap-2 mb-4">
+        <div className="flex gap-1">
+          {[...Array(testimonial.rating)].map((_, j) => (
+            <Star key={j} size={14} style={{ color: 'var(--warning-400)' }} className="fill-current" />
+          ))}
+        </div>
+        <span className="text-xs" style={{ color: 'var(--text-muted)' }}>({testimonial.rating}.0)</span>
+      </div>
+
+      {/* Client Info */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <Image
+            src={testimonial.avatar}
+            alt={`Photo of ${testimonial.name}`}
+            width={40}
+            height={40}
+            className="w-10 h-10 rounded-full object-cover"
+          />
+          <div>
+            <p className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{testimonial.name}</p>
+            <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{testimonial.company}</p>
+          </div>
+        </div>
+        <div className="text-right">
+          <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{testimonial.location}</p>
+          <p className="text-xs" style={{ color: 'var(--primary-600)' }}>{testimonial.projectType}</p>
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <section className="relative py-20 md:py-28 px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-white to-[var(--surface-primary)]">
@@ -297,8 +417,8 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* Featured Testimonials Carousel */}
-        <div className="mb-16">
+        {/* Featured Testimonials - Desktop Only */}
+        <div className="mb-16 hidden md:block">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {featuredTestimonials.map((testimonial, i) => (
               <div
@@ -432,12 +552,12 @@ export default function Testimonials() {
             ))}
           </div>
 
-          {/* Load More Button - Moved here */}
+          {/* Load More Button - Desktop */}
           {hasMore && (
             <button
               onClick={handleLoadMore}
               disabled={isLoading}
-              className="inline-flex items-center gap-2 px-6 py-2 rounded-xl font-medium transition-all duration-300 disabled:opacity-50 hover:scale-105"
+              className="hidden md:inline-flex items-center gap-2 px-6 py-2 rounded-xl font-medium transition-all duration-300 disabled:opacity-50 hover:scale-105"
               style={{
                 backgroundColor: 'white',
                 borderColor: 'var(--primary-700)',
@@ -473,99 +593,120 @@ export default function Testimonials() {
           )}
         </div>
 
-        {/* Main Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Mobile Carousel */}
+        <div className="md:hidden mb-8">
+          <div 
+            ref={carouselRef}
+            className="relative overflow-hidden"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div 
+              className="flex transition-transform duration-300 ease-out"
+              style={{ 
+                transform: `translateX(-${currentSlide * 100}%)` 
+              }}
+            >
+              {currentTestimonials.map((testimonial) => (
+                <div 
+                  key={testimonial.id} 
+                  className="w-full flex-shrink-0 px-2"
+                >
+                  <TestimonialCard testimonial={testimonial} />
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-300"
+              style={{
+                backgroundColor: 'white',
+                color: 'var(--primary-700)'
+              }}
+              aria-label="Previous slide"
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all duration-300"
+              style={{
+                backgroundColor: 'white',
+                color: 'var(--primary-700)'
+              }}
+              aria-label="Next slide"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-6">
+            {currentTestimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`transition-all duration-300 rounded-full ${
+                  index === currentSlide 
+                    ? 'w-8 h-2' 
+                    : 'w-2 h-2'
+                }`}
+                style={{
+                  backgroundColor: index === currentSlide 
+                    ? 'var(--primary-700)' 
+                    : 'var(--neutral-300)'
+                }}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Mobile Load More */}
+          {hasMore && (
+            <div className="text-center mt-8">
+              <button
+                onClick={handleLoadMore}
+                disabled={isLoading}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all duration-300 disabled:opacity-50"
+                style={{
+                  backgroundColor: 'var(--primary-700)',
+                  color: 'var(--text-on-primary)'
+                }}
+              >
+                {isLoading ? (
+                  <>
+                    <div className="w-4 h-4 rounded-full animate-spin" style={{ borderWidth: '2px', borderStyle: 'solid', borderColor: 'currentColor', borderTopColor: 'transparent' }}></div>
+                    Loading...
+                  </>
+                ) : (
+                  <>
+                    Lihat Lainnya
+                    <ArrowRight size={16} />
+                  </>
+                )}
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* Desktop Grid */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentTestimonials.map((testimonial, i) => {
-            if (testimonial.featured) return null // Skip featured testimonials here
+            if (testimonial.featured) return null
             
             return (
-              <div
-                key={testimonial.id}
-                className="card-base rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group"
-                data-aos="fade-up"
-                data-aos-delay={(i % 3) * 100}
-              >
-                {/* Industry Tag */}
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs px-3 py-1 rounded-full" style={{ 
-                    backgroundColor: 'var(--neutral-100)', 
-                    color: 'var(--text-tertiary)' 
-                  }}>
-                    {testimonial.industry}
-                  </span>
-                  {testimonial.verified && (
-                    <div className="flex items-center gap-1 text-xs" style={{ color: 'var(--success-600)' }}>
-                      <CheckCircle2 size={12} />
-                      <span>Verified</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Results */}
-                {testimonial.results && (
-                  <div className="rounded-lg p-3 mb-4" style={{ 
-                    background: 'linear-gradient(135deg, var(--primary-50), var(--secondary-50))' 
-                  }}>
-                    <div className="flex items-center gap-2" style={{ color: 'var(--primary-700)' }}>
-                      <Target size={16} />
-                      <div className="text-sm">
-                        <span className="font-bold">{testimonial.results.increase}</span>
-                        <span className="ml-1" style={{ color: 'var(--primary-600)' }}>{testimonial.results.metric}</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* Quote */}
-                <blockquote className="mb-4 text-sm leading-relaxed line-clamp-4 group-hover:line-clamp-none transition-all" style={{ color: 'var(--text-secondary)' }}>
-                  &ldquo;{testimonial.quote}&rdquo;
-                </blockquote>
-
-                {/* Rating */}
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex gap-1">
-                    {[...Array(testimonial.rating)].map((_, j) => (
-                      <Star key={j} size={14} style={{ color: 'var(--warning-400)' }} className="fill-current" />
-                    ))}
-                  </div>
-                  <span className="text-xs" style={{ color: 'var(--text-muted)' }}>({testimonial.rating}.0)</span>
-                </div>
-
-                {/* Client Info */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <Image
-                      src={testimonial.avatar}
-                      alt={`Photo of ${testimonial.name}`}
-                      width={40}
-                      height={40}
-                      className="w-10 h-10 rounded-full object-cover"
-                    />
-                    <div>
-                      <p className="font-semibold text-sm" style={{ color: 'var(--text-primary)' }}>{testimonial.name}</p>
-                      <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{testimonial.company}</p>
-                    </div>
-                  </div>
-                  <div className="text-right">
-                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{testimonial.location}</p>
-                    <p className="text-xs" style={{ color: 'var(--primary-600)' }}>{testimonial.projectType}</p>
-                  </div>
-                </div>
+              <div key={testimonial.id} data-aos="fade-up" data-aos-delay={(i % 3) * 100}>
+                <TestimonialCard testimonial={testimonial} />
               </div>
             )
           })}
         </div>
 
       </div>
-
-      <style jsx>{`
-        .line-clamp-4 {
-          display: -webkit-box;
-          -webkit-line-clamp: 4;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-      `}</style>
     </section>
   )
 }
