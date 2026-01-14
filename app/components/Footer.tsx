@@ -58,8 +58,8 @@ export default function Footer() {
             <ContactCard
               icon={<Mail size={18} className="sm:w-5 sm:h-5" />}
               title="Email"
-              value="support@pintuweb.com"
-              link="mailto:support@pintuweb.com"
+              value="sanzystore@gmail.com"
+              link="mailto:sanzystore@gmail.com"
             />
             <ContactCard
               icon={<MapPin size={18} className="sm:w-5 sm:h-5" />}
