@@ -2,11 +2,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import dynamic from 'next/dynamic'
-
-// Lazy load Header dan Footer untuk performa
-const Header = dynamic(() => import('./components/Header'), { ssr: true })
-const Footer = dynamic(() => import('./components/Footer'), { ssr: true })
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
@@ -40,27 +35,16 @@ export const metadata: Metadata = {
     shortcut: '/images/favicon.ico',
     apple: '/images/apple-touch-icon.png',
     other: [
-      {
-        rel: 'icon',
-        url: '/images/favicon-32x32.png',
-      },
-      {
-        rel: 'icon',
-        url: '/images/favicon-16x16.png',
-      },
-      {
-        rel: 'manifest',
-        url: '/site.webmanifest',
-      },
+      { rel: 'icon', url: '/images/favicon-32x32.png' },
+      { rel: 'icon', url: '/images/favicon-16x16.png' },
+      { rel: 'manifest', url: '/site.webmanifest' },
     ],
   },
   themeColor: '#1d4ed8',
   alternates: {
     canonical: 'https://pintuweb.com',
-    languages: {
-      'id-ID': 'https://pintuweb.com',
-    },
-  }
+    languages: { 'id-ID': 'https://pintuweb.com' },
+  },
 }
 
 export default function RootLayout({
@@ -72,9 +56,7 @@ export default function RootLayout({
     <html lang="id" className={`${inter.variable}`} suppressHydrationWarning>
       <head />
       <body className="bg-white text-gray-900 antialiased font-sans dark:bg-gray-950 dark:text-white transition-colors duration-300">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   )
