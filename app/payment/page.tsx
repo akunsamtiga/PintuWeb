@@ -202,14 +202,14 @@ function PaymentContent() {
         console.log('✅ Payment success:', result)
         setStatus('success')
         setTimeout(() => {
-          window.location.href = `${A_COM_URL}/deposit?status=success&orderId=${order}`
+          window.location.href = `${A_COM_URL}/payment?status=success&orderId=${order}`
         }, 3000)
       },
       onPending: (result: any) => {
         console.log('⏳ Payment pending:', result)
         setStatus('pending')
         setTimeout(() => {
-          window.location.href = `${A_COM_URL}/deposit?status=pending&orderId=${order}`
+          window.location.href = `${A_COM_URL}/payment?status=pending&orderId=${order}`
         }, 3000)
       },
       onError: (result: any) => {
@@ -217,21 +217,21 @@ function PaymentContent() {
         setStatus('error')
         setErrorMessage('Terjadi kesalahan saat memproses pembayaran.')
         setTimeout(() => {
-          window.location.href = `${A_COM_URL}/deposit?status=error&orderId=${order}`
+          window.location.href = `${A_COM_URL}/payment?status=error&orderId=${order}`
         }, 3000)
       },
       onClose: () => {
         console.log('🚪 Snap closed')
         setStatus('closed')
         setTimeout(() => {
-          window.location.href = `${A_COM_URL}/deposit?status=closed&orderId=${order}`
+          window.location.href = `${A_COM_URL}/payment?status=closed&orderId=${order}`
         }, 3000)
       },
     })
   }
 
   const goBack = () => {
-    window.location.href = `${A_COM_URL}/deposit`
+    window.location.href = `${A_COM_URL}/payment`
   }
 
   return (
